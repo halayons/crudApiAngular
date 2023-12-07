@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Angular 16 CRUD Example</h1>
+<h1>Alumnos</h1>
 <a href="#" routerLink="/post/create/" class="btn btn-succes">Create New Post</a>
 <table class="table table-striped">
     <thead>
@@ -17,7 +17,7 @@
         <td>{{post.email}}</td>
         <td>
             <a href="#" [routerLink]="['/alumnos/',post.id,'view']" class="btn btn-info">View</a>
-            <a href="#" [routerLink]="['post',post.id,'edit']" class="btn btn-primary">Edit</a>
+            <a href="#" [routerLink]="['/alumnos/',post.id,'edit']" class="btn btn-primary">Edit</a>
             <button type="button"(click)="deletePost(post.id)"class="btn btn-danger">Delete</button>
         </td>
     </tr>

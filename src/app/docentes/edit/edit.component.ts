@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post';
+import { Docentes } from '../docentes';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../post.service';
+import { DocentesService } from '../docentes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,18 +12,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditComponent implements OnInit{
 
   id!:number;
-  post!:Post;
+  docentes!:Docentes;
   form!:FormGroup;
 
   constructor(
-    public postService:PostService,
+    public docentesService:DocentesService,
     private route: ActivatedRoute,
     private router:Router
   ){}
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['postId'];
-    this.postService.find(this.id).subscribe((data: Post)=>{
-      this.post = data;
+    this.id = this.route.snapshot.params['docenteId'];
+    this.docentesService.find(this.id).subscribe((data: Docentes)=>{
+      this.docentes = data;
   });
   this.form = new FormGroup({
     nombres: new FormControl('', [Validators.required]),
@@ -36,9 +36,9 @@ get f(){
 }
 submit(){
   console.log(this.form.value);
-  this.postService.update(this.id, this.form.value).subscribe((res:any) => {
-       console.log('Post updated successfully!');
-       this.router.navigateByUrl('post/index');
+  this.docentesService.update(this.id, this.form.value).subscribe((res:any) => {
+       console.log('Docentes updated successfully!');
+       this.router.navigateByUrl('docentes/index');
   })
 }
 }

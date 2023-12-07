@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Notas</h1>
+    <a href="#" routerLink="/notas/create/" class="btn btn-succes">Create New nota</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nota1</th>
+                <th>Nota2</th>
+                <th>Nota3</th>
+                <th>Nota Final</th>
+                <th width="250px">Action</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr *ngFor="let nota of notas">
+            <td>{{nota.id}}</td>
+            <td>{{nota.nota1}}</td>
+            <td>{{nota.nota2}}</td>
+            <td>{{nota.nota3}}</td>
+            <td>{{nota.notaFinal}}</td>
+            <td>
+                <a href="#" [routerLink]="['/notas/',nota.id,'view']" class="btn btn-info">View</a>
+                <a href="#" [routerLink]="['/notas/',nota.id,'edit']" class="btn btn-primary">Edit</a>
+                <button type="button"(click)="deletePost(nota.id)"class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </div>

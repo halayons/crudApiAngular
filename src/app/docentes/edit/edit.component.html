@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Update Post</h1>
    
-    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+    <a href="#" routerLink="/docentes/index" class="btn btn-primary">Back</a>
           
     <form [formGroup]="form" (ngSubmit)="submit()">
     
@@ -11,7 +11,7 @@
                 formControlName="nombres"
                 id="nombres" 
                 type="text" 
-                [(ngModel)]="post.nombres"
+                [(ngModel)]="docentes.nombres"
                 class="form-control">
             <div *ngIf="f['nombres'].touched && f['nombres'].invalid" class="alert alert-danger">
                 <div *ngIf="f['nombres'].errors && f['nombres'].errors['required']">Title is required.</div>
@@ -24,7 +24,7 @@
                 formControlName="email"
                 id="email" 
                 type="text" 
-                [(ngModel)]="post.email"
+                [(ngModel)]="docentes.email"
                 class="form-control">
             </textarea>
             <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">

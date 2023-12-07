@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post';
+import { Carreras } from '../carreras';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../post.service';
+import { CarrerasService } from '../carreras.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,22 +12,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditComponent implements OnInit{
 
   id!:number;
-  post!:Post;
+  carreras!:Carreras;
   form!:FormGroup;
 
   constructor(
-    public postService:PostService,
+    public carrerasService:CarrerasService,
     private route: ActivatedRoute,
     private router:Router
   ){}
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['postId'];
-    this.postService.find(this.id).subscribe((data: Post)=>{
-      this.post = data;
+    this.id = this.route.snapshot.params['carreraId'];
+    this.carrerasService.find(this.id).subscribe((data: Carreras)=>{
+      this.carreras = data;
   });
   this.form = new FormGroup({
     nombres: new FormControl('', [Validators.required]),
-    email: new FormControl('', Validators.required)
+    estado: new FormControl('', Validators.required)
   });
 
 }
@@ -36,9 +36,9 @@ get f(){
 }
 submit(){
   console.log(this.form.value);
-  this.postService.update(this.id, this.form.value).subscribe((res:any) => {
-       console.log('Post updated successfully!');
-       this.router.navigateByUrl('post/index');
+  this.carrerasService.update(this.id, this.form.value).subscribe((res:any) => {
+       console.log('Carrera updated successfully!');
+       this.router.navigateByUrl('carreras/index');
   })
 }
 }

@@ -6,15 +6,15 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
-  {path:'post',redirectTo:'post/index',pathMatch:'full'},
-  {path:'post/index',component:IndexComponent},
-  {path:'alumnos/:postId/view',component:ViewComponent},
-  {path:'post/create', component:CreateComponent},
-  {path:'alumnos/:postId/edit',component:EditComponent}
+  { path: 'docentes', redirectTo: 'docentes/index', pathMatch: 'full'},
+  { path: 'docentes/index', component: IndexComponent },
+  { path: 'docentes/:docenteId/view', component: ViewComponent },
+  { path: 'docentes/create', component: CreateComponent },
+  { path: 'docentes/:docenteId/edit', component: EditComponent } 
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PostRoutingModule { }
+export class DocentesRoutingModule { }

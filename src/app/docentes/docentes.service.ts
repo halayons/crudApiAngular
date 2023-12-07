@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Post } from './post';
+import { Docentes } from './docentes';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
-  //private apiURL="https://jsonplaceholder.typicode.com";
-  private apiURL="http://localhost:8080/api/alumnos";
+export class DocentesService {
+  private apiURL="http://localhost:8090/api/docentes";
   httpOptions={
     headers:new HttpHeaders({
       'content-Type':'application/json'
@@ -17,15 +16,14 @@ export class PostService {
 
   constructor(private httpClient:HttpClient) { }
   getAll():Observable<any>{
-   // return this.httpClient.get(this.apiURL + '/posts/')
-    return this.httpClient.get(this.apiURL+'/alumnos')
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }
+     return this.httpClient.get(this.apiURL+'/docentes')
+     .pipe(
+       catchError(this.errorHandler)
+     )
+   }
 
-  create(post:Post):Observable<any>{
-    return this.httpClient.post(this.apiURL+'/',JSON.stringify(post),this.httpOptions)
+   create(docentes:Docentes):Observable<any>{
+    return this.httpClient.post(this.apiURL+'/',JSON.stringify(docentes),this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -39,8 +37,8 @@ export class PostService {
     )
   }
 
-  update(id:number,post:Post):Observable<any>{
-    return this.httpClient.put(this.apiURL + '/alumnos/'+id, JSON.stringify(post),this.httpOptions)
+  update(id:number,docentes:Docentes):Observable<any>{
+    return this.httpClient.put(this.apiURL + '/docentes/'+id, JSON.stringify(docentes),this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -63,4 +61,3 @@ export class PostService {
     return throwError(errorMessage);
   }
 }
-

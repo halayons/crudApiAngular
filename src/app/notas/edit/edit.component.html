@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Update notas</h1>
+   
+    <a href="#" routerLink="/notas/index" class="btn btn-primary">Back</a>
+          
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    
+        <div class="form-group">
+            <label for="nota1">nota1:</label>
+            <input 
+                formControlName="nota1"
+                id="nota1" 
+                type="text" 
+                [(ngModel)]="notas.nota1"
+                class="form-control">
+            <div *ngIf="f['nota1'].touched && f['nota1'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nota1'].errors && f['nota1'].errors['required']">Nota is required.</div>
+            </div>
+        </div>
+           
+        <div class="form-group">
+            <label for="nota2">nota2</label>
+            <textarea 
+                formControlName="nota2"
+                id="nota2" 
+                type="text" 
+                [(ngModel)]="notas.nota2"
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['nota2'].touched && f['nota2'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nota2'].errors && f['nota2'].errors['required']">Nota is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nota3">nota3</label>
+            <textarea 
+                formControlName="nota3"
+                id="nota3" 
+                type="text" 
+                [(ngModel)]="notas.nota3"
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['nota3'].touched && f['nota3'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nota3'].errors && f['nota3'].errors['required']">Nota is required.</div>
+            </div>
+        </div>
+         
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

@@ -1,7 +1,7 @@
 <div class="container">
-    <h1>Update Post</h1>
+    <h1>Update materia</h1>
    
-    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+    <a href="#" routerLink="/materias/index" class="btn btn-primary">Back</a>
           
     <form [formGroup]="form" (ngSubmit)="submit()">
     
@@ -11,26 +11,25 @@
                 formControlName="nombres"
                 id="nombres" 
                 type="text" 
-                [(ngModel)]="post.nombres"
+                [(ngModel)]="materias.nombres"
                 class="form-control">
             <div *ngIf="f['nombres'].touched && f['nombres'].invalid" class="alert alert-danger">
-                <div *ngIf="f['nombres'].errors && f['nombres'].errors['required']">Title is required.</div>
+                <div *ngIf="f['nombres'].errors && f['nombres'].errors['required']">Nombre is required.</div>
             </div>
         </div>
            
         <div class="form-group">
-            <label for="email">Email</label>
+            <label for="estado">Estado</label>
             <textarea 
-                formControlName="email"
-                id="email" 
+                formControlName="estado"
+                id="estado" 
                 type="text" 
-                [(ngModel)]="post.email"
+                [(ngModel)]="materias.estado"
                 class="form-control">
             </textarea>
-            <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
-                <div *ngIf="f['email'].errors && f['email'].errors['required']">Body is required.</div>
-            </div>
-        </div>
+            <div *ngIf="f['estado'].touched && f['estado'].invalid" class="alert alert-danger">
+                <div *ngIf="f['estado'].errors && f['estado'].errors['required']">estado is required.</div>
+            </div>estado    </div>
          
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
     </form>

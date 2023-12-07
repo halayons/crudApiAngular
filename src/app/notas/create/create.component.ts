@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../post.service';
+import { NotasService } from '../notas.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,14 +13,15 @@ export class CreateComponent implements OnInit{
   form!:FormGroup;
 
   constructor(
-    public postService:PostService,
+    public notasService:NotasService,
     private router:Router
   ){}
 
   ngOnInit(): void {
      this.form=new FormGroup({
-      nombres:new FormControl('',[Validators.required]),
-      email:new FormControl('',Validators.required)
+      nota1:new FormControl('',[Validators.required]),
+      nota2:new FormControl('',Validators.required),
+      nota3:new FormControl('',Validators.required)
      });
   }
 
@@ -30,10 +31,11 @@ export class CreateComponent implements OnInit{
 
   submit(){
     console.log(this.form.value);
-    this.postService.create(this.form.value).subscribe((res:any)=>{
-      console.log('Post created successfully!');
-      this.router.navigateByUrl('post/index');
+    this.notasService.create(this.form.value).subscribe((res:any)=>{
+      console.log('notas created successfully!');
+      this.router.navigateByUrl('notas/index');
     })
   }
 
 }
+

@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Materias</h1>
+    <a href="#" routerLink="/materias/create/" class="btn btn-succes">Create New materias</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th width="250px">Action</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr *ngFor="let materia of materias">
+            <td>{{materia.id}}</td>
+            <td>{{materia.nombres}}</td>
+            <td>{{materia.estado}}</td>
+            <td>
+                <a href="#" [routerLink]="['/materias/',materia.id,'view']" class="btn btn-info">View</a>
+                <a href="#" [routerLink]="['/materias/',materia.id,'edit']" class="btn btn-primary">Edit</a>
+                <button type="button"(click)="deletePost(materia.id)"class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </div>

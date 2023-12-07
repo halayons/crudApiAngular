@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostModule } from './post/post.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DocentesModule } from './docentes/docentes.module';
+import { CarrerasModule } from './carreras/carreras.module';
+import { MateriasModule } from './materias/materias.module';
+import { NotasModule } from './notas/notas.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     PostModule,
+    DocentesModule,
+    CarrerasModule,
+    MateriasModule,
+    NotasModule,
     HttpClientModule
   ],
   providers: [],

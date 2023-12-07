@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post';
+import { Materias } from '../materias';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../post.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MateriasService } from '../materias.service';
 
 @Component({
   selector: 'app-edit',
@@ -12,22 +12,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditComponent implements OnInit{
 
   id!:number;
-  post!:Post;
+  materias!:Materias;
   form!:FormGroup;
 
   constructor(
-    public postService:PostService,
+    public materiasService:MateriasService,
     private route: ActivatedRoute,
     private router:Router
   ){}
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['postId'];
-    this.postService.find(this.id).subscribe((data: Post)=>{
-      this.post = data;
+    this.id = this.route.snapshot.params['materiaId'];
+    this.materiasService.find(this.id).subscribe((data: Materias)=>{
+      this.materias = data;
   });
   this.form = new FormGroup({
     nombres: new FormControl('', [Validators.required]),
-    email: new FormControl('', Validators.required)
+    estado: new FormControl('', Validators.required)
   });
 
 }
@@ -36,9 +36,10 @@ get f(){
 }
 submit(){
   console.log(this.form.value);
-  this.postService.update(this.id, this.form.value).subscribe((res:any) => {
-       console.log('Post updated successfully!');
-       this.router.navigateByUrl('post/index');
+  this.materiasService.update(this.id, this.form.value).subscribe((res:any) => {
+       console.log('materia updated successfully!');
+       this.router.navigateByUrl('materias/index');
   })
 }
+
 }

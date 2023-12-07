@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Carreras</h1>
+    <a href="#" routerLink="/carreras/create/" class="btn btn-succes">Create New Carrera</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th width="250px">Action</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr *ngFor="let carrera of carreras">
+            <td>{{carrera.id}}</td>
+            <td>{{carrera.nombres}}</td>
+            <td>{{carrera.estado}}</td>
+            <td>
+                <a href="#" [routerLink]="['/carreras/',carrera.id,'view']" class="btn btn-info">View</a>
+                <a href="#" [routerLink]="['/carreras/',carrera.id,'edit']" class="btn btn-primary">Edit</a>
+                <button type="button"(click)="deletePost(carrera.id)"class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </div>

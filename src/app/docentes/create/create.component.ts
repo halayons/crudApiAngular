@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../post.service';
+import { DocentesService } from '../docentes.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class CreateComponent implements OnInit{
   form!:FormGroup;
 
   constructor(
-    public postService:PostService,
+    public docentesService:DocentesService,
     private router:Router
   ){}
 
@@ -30,10 +30,11 @@ export class CreateComponent implements OnInit{
 
   submit(){
     console.log(this.form.value);
-    this.postService.create(this.form.value).subscribe((res:any)=>{
+    this.docentesService.create(this.form.value).subscribe((res:any)=>{
       console.log('Post created successfully!');
-      this.router.navigateByUrl('post/index');
+      this.router.navigateByUrl('docentes/index');
     })
   }
 
 }
+
